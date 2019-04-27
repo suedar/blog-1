@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suedar.blog.biz.mapper.ChapterLabelRelationMapper">
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.ChapterLabelRelation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="chapId" jdbcType="INTEGER" property="chapId" />
+    <result column="labelId" jdbcType="INTEGER" property="labelId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, chapId, labelId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ChapterLabelRelation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ChapterLabelRelation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.ChapterLabelRelation">
+    insert into ChapterLabelRelation (id, created, updated, 
+      isDeleted, chapId, labelId
+      )
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{chapId,jdbcType=INTEGER}, #{labelId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.ChapterLabelRelation">
+    insert into ChapterLabelRelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="chapId != null">
+        chapId,
+      </if>
+      <if test="labelId != null">
+        labelId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="chapId != null">
+        #{chapId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        #{labelId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.ChapterLabelRelation">
+    update ChapterLabelRelation
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="chapId != null">
+        chapId = #{chapId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        labelId = #{labelId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.ChapterLabelRelation">
+    update ChapterLabelRelation
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      chapId = #{chapId,jdbcType=INTEGER},
+      labelId = #{labelId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

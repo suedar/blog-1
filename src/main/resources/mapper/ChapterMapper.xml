@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suedar.blog.biz.mapper.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="temperature" jdbcType="INTEGER" property="temperature" />
+    <result column="wordCount" jdbcType="INTEGER" property="wordCount" />
+    <result column="readTime" jdbcType="INTEGER" property="readTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, title, temperature, wordCount, readTime, content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter (id, created, updated, 
+      isDeleted, title, temperature, 
+      wordCount, readTime, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{temperature,jdbcType=INTEGER}, 
+      #{wordCount,jdbcType=INTEGER}, #{readTime,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="temperature != null">
+        temperature,
+      </if>
+      <if test="wordCount != null">
+        wordCount,
+      </if>
+      <if test="readTime != null">
+        readTime,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="temperature != null">
+        #{temperature,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null">
+        #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="readTime != null">
+        #{readTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="temperature != null">
+        temperature = #{temperature,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null">
+        wordCount = #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="readTime != null">
+        readTime = #{readTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      temperature = #{temperature,jdbcType=INTEGER},
+      wordCount = #{wordCount,jdbcType=INTEGER},
+      readTime = #{readTime,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="contentPath" jdbcType="VARCHAR" property="contentPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, bookId, title, sequence, contentPath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter (id, created, updated, 
+      isDeleted, bookId, title, 
+      sequence, contentPath)
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{bookId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="contentPath != null">
+        contentPath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        bookId = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        contentPath = #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      bookId = #{bookId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      contentPath = #{contentPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="contentPath" jdbcType="VARCHAR" property="contentPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, bookId, title, sequence, contentPath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter (id, created, updated, 
+      isDeleted, bookId, title, 
+      sequence, contentPath)
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{bookId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="contentPath != null">
+        contentPath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        bookId = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        contentPath = #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      bookId = #{bookId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      contentPath = #{contentPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="contentPath" jdbcType="VARCHAR" property="contentPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, bookId, title, sequence, contentPath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter (id, created, updated, 
+      isDeleted, bookId, title, 
+      sequence, contentPath)
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{bookId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="contentPath != null">
+        contentPath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        bookId = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        contentPath = #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      bookId = #{bookId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      contentPath = #{contentPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.suedar.blog.api.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="isDeleted" jdbcType="BIT" property="isDeleted" />
+    <result column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="contentPath" jdbcType="VARCHAR" property="contentPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created, updated, isDeleted, bookId, title, sequence, contentPath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter (id, created, updated, 
+      isDeleted, bookId, title, 
+      sequence, contentPath)
+    values (#{id,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{bookId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    insert into Chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="contentPath != null">
+        contentPath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    <set>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="bookId != null">
+        bookId = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="contentPath != null">
+        contentPath = #{contentPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suedar.blog.api.domain.Chapter">
+    update Chapter
+    set created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      isDeleted = #{isDeleted,jdbcType=BIT},
+      bookId = #{bookId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      contentPath = #{contentPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

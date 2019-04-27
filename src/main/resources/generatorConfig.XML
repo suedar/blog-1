@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="/Users/xyang010/Documents/mybatisgen/mysql-connector-java-5.1.47.jar" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/blog?useUnicode=true&amp;characterEncoding=utf-8" userId="root" password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 实体，targetProject：物理全路径 -->
+        <javaModelGenerator targetPackage="com.suedar.blog.api.domain" targetProject="/Users/xyang010/Documents/IdeaProject/blog/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- xml文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/xyang010/Documents/IdeaProject/blog/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- mapper类 -->
+        <!-- 想要生成annotation形式的mapper，XMLMAPPER 替换成 ANNOTATEDMAPPER -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.suedar.blog.biz.mapper" targetProject="/Users/xyang010/Documents/IdeaProject/blog/src/main/java" >
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <table tableName="Chapter" domainObjectName="Chapter" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="Label" domainObjectName="Label" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" schema="blog">
+            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="ChapterLabelRelation" domainObjectName="ChapterLabelRelation" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="RecommendChapter" domainObjectName="RecommendChapter" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="UserBaseInfo" domainObjectName="UserBaseInfo" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
