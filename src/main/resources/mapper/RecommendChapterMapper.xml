@@ -18,6 +18,30 @@
     from RecommendChapter
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="pageQuery" parameterType="com.suedar.blog.api.query.RecommendChapterPageQuery" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from RecommendChapter
+    where isDeleted = 0
+    <if test="text != null and text != '' ">
+      text like concat(concat("%", #{text}), "%")
+    </if>
+    order by created desc
+    limit #{offset},#{pageSize}
+  </select>
+  <select id="countPageQuery" parameterType="com.suedar.blog.api.query.RecommendChapterPageQuery" resultType="java.lang.Integer">
+    select
+    count(id)
+    from RecommendChapter
+    where isDeleted = 0
+    <if test="text != null and text != '' ">
+      text like concat(concat('%', #{text}), '%')
+    </if>
+    order by created desc
+    limit #{offset},#{pageSize}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from RecommendChapter
     where id = #{id,jdbcType=INTEGER}
