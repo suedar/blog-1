@@ -12,6 +12,33 @@
   <sql id="Base_Column_List">
     id, created, updated, isDeleted, chapId, labelId
   </sql>
+
+  <select id="selectByChapterIds" parameterType="java.util.List" resultMap="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from ChapterLabelRelation
+    where isDeleted = 0
+    <if test="chapterIds != null">
+      and chapId in
+      <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectByLabelIds" parameterType="java.util.List" resultMap="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from ChapterLabelRelation
+    where isDeleted = 0
+    <if test="chapterIds != null">
+      and labelId in
+      <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -102,5 +129,30 @@
       chapId = #{chapId,jdbcType=INTEGER},
       labelId = #{labelId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="del" parameterType="com.suedar.blog.api.dto.ChapterLabelRelationDelDTO">
+    update ChapterLabelRelation
+    set
+      isDeleted = 1
+    where
+    isDeleted = 0
+    <if test="chapId != null">
+      and chapId = #{chapId,jdbcType=INTEGER}
+    </if>
+    <if test="labelId != null">
+      and labelId = #{labelId,jdbcType=INTEGER}
+    </if>
+    <if test="chapIds != null">
+      and chapId in
+      <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="labelIds != null">
+      and labelId in
+      <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
   </update>
 </mapper>

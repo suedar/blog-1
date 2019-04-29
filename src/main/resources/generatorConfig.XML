@@ -38,18 +38,18 @@
             <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="Label" domainObjectName="Label" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" schema="blog">
-            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="ChapterLabelRelation" domainObjectName="ChapterLabelRelation" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
-            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="RecommendChapter" domainObjectName="RecommendChapter" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
-            <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table tableName="Label" domainObjectName="Label" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" schema="blog">-->
+            <!--&lt;!&ndash; 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 &ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="ChapterLabelRelation" domainObjectName="ChapterLabelRelation" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">-->
+            <!--&lt;!&ndash; 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 &ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="RecommendChapter" domainObjectName="RecommendChapter" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">-->
+            <!--&lt;!&ndash; 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 &ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
         <table tableName="UserBaseInfo" domainObjectName="UserBaseInfo" modelType="flat" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
             <!-- 使用表中字段名作为实体属性名；若为false则表中字段带下划线，对应实体属性为驼峰命名 -->
             <property name="useActualColumnNames" value="true"/>

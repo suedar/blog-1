@@ -1,6 +1,9 @@
 package com.suedar.blog.biz.mapper;
 
 import com.suedar.blog.api.domain.ChapterLabelRelation;
+import com.suedar.blog.api.dto.ChapterLabelRelationDelDTO;
+
+import java.util.List;
 
 public interface ChapterLabelRelationMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,10 @@ public interface ChapterLabelRelationMapper {
     int updateByPrimaryKeySelective(ChapterLabelRelation record);
 
     int updateByPrimaryKey(ChapterLabelRelation record);
+
+    List<ChapterLabelRelation> selectByChapterIds(List<Integer> chapterIds);
+
+    List<ChapterLabelRelation> selectByLabelIds(List<Integer> labelIds);
+
+    int del(ChapterLabelRelationDelDTO delDTO);
 }

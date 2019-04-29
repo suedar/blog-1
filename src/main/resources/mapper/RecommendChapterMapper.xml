@@ -38,8 +38,6 @@
     <if test="text != null and text != '' ">
       text like concat(concat('%', #{text}), '%')
     </if>
-    order by created desc
-    limit #{offset},#{pageSize}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

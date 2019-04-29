@@ -26,7 +26,7 @@ public class RecommendChapterImpl implements RecommendChapterService {
             return -1;
         }
 
-        return mapper.insert(recommendChapter);
+        return mapper.insertSelective(recommendChapter);
     }
 
     @Override

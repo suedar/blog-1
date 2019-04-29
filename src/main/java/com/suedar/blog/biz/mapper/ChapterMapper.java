@@ -1,6 +1,9 @@
 package com.suedar.blog.biz.mapper;
 
 import com.suedar.blog.api.domain.Chapter;
+import com.suedar.blog.api.query.ChapterPageQuery;
+
+import java.util.List;
 
 public interface ChapterMapper {
     int deleteByPrimaryKey(Integer id);
@@ -9,9 +12,13 @@ public interface ChapterMapper {
 
     int insertSelective(Chapter record);
 
-    Chapter selectByPrimaryKey(Integer id);
+    List<Chapter> selectByPrimaryKeyList(List<Integer> ids);
 
     int updateByPrimaryKeySelective(Chapter record);
 
     int updateByPrimaryKey(Chapter record);
+
+    List<Chapter> pageQuery(ChapterPageQuery query);
+
+    int countPageQuery(ChapterPageQuery query);
 }
