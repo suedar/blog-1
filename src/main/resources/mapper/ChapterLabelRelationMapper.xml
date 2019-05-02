@@ -13,7 +13,7 @@
     id, created, updated, isDeleted, chapId, labelId
   </sql>
 
-  <select id="selectByChapterIds" parameterType="java.util.List" resultMap="java.lang.Integer">
+  <select id="selectByChapterIds" parameterType="java.util.List" resultType="java.lang.Integer">
     select
     <include refid="Base_Column_List" />
     from ChapterLabelRelation
@@ -26,7 +26,7 @@
     </if>
   </select>
 
-  <select id="selectByLabelIds" parameterType="java.util.List" resultMap="java.lang.Integer">
+  <select id="selectByLabelIds" parameterType="java.util.List" resultType="java.lang.Integer">
     select
     <include refid="Base_Column_List" />
     from ChapterLabelRelation

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -25,7 +24,7 @@ public class UserController {
         return BaseResult.rightReturn(userBaseInfo);
     }
 
-    @PostMapping("/updateByUserId")
+    @PostMapping("/personalMsg")
     public BaseResult<Integer> updateByUserId(@RequestBody UserBaseInfo userBaseInfo) {
         int res = userService.updateByUserId(userBaseInfo);
         if (res < 1) {

@@ -6,10 +6,12 @@ import com.suedar.blog.api.dto.ChapterLabelRelationDelDTO;
 import com.suedar.blog.biz.mapper.ChapterLabelRelationMapper;
 import com.suedar.blog.biz.service.ChapterLabelRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
+@Service
 public class ChapterLabelRelationServiceImpl implements ChapterLabelRelationService {
 
     @Autowired

@@ -1,7 +1,10 @@
 package com.suedar.blog.biz.mapper;
 
 import com.suedar.blog.api.domain.UserBaseInfo;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface UserBaseInfoMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -9,7 +12,7 @@ public interface UserBaseInfoMapper {
 
     int insertSelective(UserBaseInfo record);
 
-    UserBaseInfo selectByPrimaryKey(Integer userId);
+    UserBaseInfo selectByPrimaryKey(@Param("userId") Integer userId);
 
     int updateByPrimaryKeySelective(UserBaseInfo record);
 
