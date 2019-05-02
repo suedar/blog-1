@@ -8,4 +8,6 @@ public interface UserService {
     UserBaseInfo selectByUserId(Integer userId);
 
     int updateByUserId(UserBaseInfo userBaseInfo);
+
+    UserBaseInfo selectByUserName(String userName);
 }

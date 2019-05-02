@@ -5,6 +5,7 @@ import com.suedar.blog.biz.mapper.UserBaseInfoMapper;
 import com.suedar.blog.biz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,5 +33,14 @@ public class UserServiceImpl implements UserService {
         }
 
         return userBaseInfoMapper.updateByPrimaryKeySelective(userBaseInfo);
+    }
+
+    @Override
+    public UserBaseInfo selectByUserName(String userName) {
+        if (StringUtils.isEmpty(userName)) {
+            return null;
+        }
+
+        return userBaseInfoMapper.selectByUserName(userName);
     }
 }

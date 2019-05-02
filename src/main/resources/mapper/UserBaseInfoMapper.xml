@@ -21,6 +21,12 @@
     from UserBaseInfo
     where userId = #{userId,jdbcType=INTEGER}
   </select>
+    <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from UserBaseInfo
+        where userName = #{userName,jdbcType=VARCHAR}
+    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from UserBaseInfo
     where userId = #{userId,jdbcType=INTEGER}

@@ -17,4 +17,7 @@ public interface UserBaseInfoMapper {
     int updateByPrimaryKeySelective(UserBaseInfo record);
 
     int updateByPrimaryKey(UserBaseInfo record);
+
+    UserBaseInfo selectByUserName(@Param("userName") String userName);
+
 }

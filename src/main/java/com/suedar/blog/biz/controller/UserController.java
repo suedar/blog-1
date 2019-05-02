@@ -32,4 +32,20 @@ public class UserController {
         }
         return BaseResult.rightReturn(res);
     }
+
+    @PostMapping("/login")
+    public BaseResult<Void> login(@RequestBody UserBaseInfo userBaseInfo) {
+        UserBaseInfo dbUser = userService.selectByUserName(userBaseInfo.getUserName());
+        if (dbUser == null) {
+            return BaseResult.errorReturn("用户不存在");
+        }
+
+        String dbPassword = dbUser.getPassword();
+        if (dbPassword.equals(userBaseInfo.getPassword())) {
+            return BaseResult.rightReturn(null);
+        }
+
+        return BaseResult.errorReturn("密码不正确");
+    }
+
 }
