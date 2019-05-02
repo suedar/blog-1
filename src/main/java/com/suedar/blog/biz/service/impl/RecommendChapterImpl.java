@@ -56,7 +56,7 @@ public class RecommendChapterImpl implements RecommendChapterService {
             return null;
         }
         Page<List<RecommendChapter>> page = new Page<>(query.getPageNum(), query.getPageSize());
-        page.setData(mapper.pageQuery(query));
+        page.setResult(mapper.pageQuery(query));
         page.setTotalNum(mapper.countPageQuery(query));
         return page;
     }

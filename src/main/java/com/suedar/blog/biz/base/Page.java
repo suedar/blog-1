@@ -4,7 +4,7 @@ import lombok.Data;
 
 public class Page<T> {
 
-    private T data;
+    private T result;
 
     private Integer pageNum = 1;
 
@@ -64,22 +64,11 @@ public class Page<T> {
         this.offset = offset;
     }
 
-    public T getData() {
-        return data;
+    public T getResult() {
+        return result;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return "Page{" +
-                "data=" + data +
-                ", pageNum=" + pageNum +
-                ", pageSize=" + pageSize +
-                ", totalNum=" + totalNum +
-                ", offset=" + offset +
-                '}';
+    public void setResult(T result) {
+        this.result = result;
     }
 }

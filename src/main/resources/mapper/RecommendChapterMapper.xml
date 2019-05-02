@@ -25,7 +25,7 @@
     from RecommendChapter
     where isDeleted = 0
     <if test="text != null and text != '' ">
-      text like concat(concat("%", #{text}), "%")
+      and text like concat(concat('%', #{text}), '%')
     </if>
     order by created desc
     limit #{offset},#{pageSize}
@@ -36,7 +36,7 @@
     from RecommendChapter
     where isDeleted = 0
     <if test="text != null and text != '' ">
-      text like concat(concat('%', #{text}), '%')
+      and text like concat(concat('%', #{text}), '%')
     </if>
   </select>
 

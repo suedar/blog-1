@@ -154,7 +154,7 @@ public class ChapterController {
         }
 
         Page<List<ChapterVO>> chapterPage = new Page<>(dbPage.getPageNum(), dbPage.getPageSize(), dbPage.getTotalNum());
-        List<Chapter> chapterList = dbPage.getData();
+        List<Chapter> chapterList = dbPage.getResult();
         if (CollectionUtils.isEmpty(chapterList)) {
             return BaseResult.rightReturn(chapterPage);
         }
@@ -185,7 +185,7 @@ public class ChapterController {
             chapterVOList.add(chapterVO);
         });
 
-        chapterPage.setData(chapterVOList);
+        chapterPage.setResult(chapterVOList);
         return BaseResult.rightReturn(chapterPage);
     }
 

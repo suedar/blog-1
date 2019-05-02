@@ -58,7 +58,7 @@ public class ChapterServiceImpl implements ChapterService {
         }
 
         Page<List<Chapter>> page = new Page<>(query.getPageNum(), query.getPageSize());
-        page.setData(chapterMapper.pageQuery(query));
+        page.setResult(chapterMapper.pageQuery(query));
         page.setTotalNum(chapterMapper.countPageQuery(query));
         return page;
     }

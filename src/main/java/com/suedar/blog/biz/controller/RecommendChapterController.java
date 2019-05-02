@@ -8,13 +8,11 @@ import com.suedar.blog.biz.service.RecommendChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/recommendChapter")
 public class RecommendChapterController {
 
     private final RecommendChapterService recommendChapterService;
@@ -24,17 +22,25 @@ public class RecommendChapterController {
         this.recommendChapterService = recommendChapterService;
     }
 
-    @PostMapping("/insert")
+    @PostMapping("/alterRecommand")
     public BaseResult<Integer> insert(RecommendChapter recommendChapter) {
-        int res = recommendChapterService.insert(recommendChapter);
+        if (recommendChapter.getId() == null) {
+            int res = recommendChapterService.insert(recommendChapter);
+            if (res < 0) {
+                return BaseResult.errorReturn("新增推荐文章失败");
+            }
+            return BaseResult.rightReturn(res);
+        }
+
+        int res = recommendChapterService.updateById(recommendChapter);
         if (res < 0) {
-            return BaseResult.errorReturn("新增推荐文章失败");
+            return BaseResult.errorReturn("修改推荐文章失败");
         }
 
         return BaseResult.rightReturn(res);
     }
 
-    @GetMapping("/del")
+    @GetMapping("/delRecommand")
     public BaseResult<Integer> deleteById(Integer id) {
         int res = recommendChapterService.deleteById(id);
         if (res < 0) {
@@ -44,17 +50,7 @@ public class RecommendChapterController {
         return BaseResult.rightReturn(res);
     }
 
-    @PostMapping("/update")
-    public BaseResult<Integer> updateById(RecommendChapter recommendChapter) {
-        int res = recommendChapterService.updateById(recommendChapter);
-        if (res < 0) {
-            return BaseResult.errorReturn("修改推荐文章失败");
-        }
-
-        return BaseResult.rightReturn(res);
-    }
-
-    @PostMapping("/pageQuery")
+    @PostMapping("/recommand")
     public BaseResult<Page<List<RecommendChapter>>> pageQuery(RecommendChapterPageQuery query) {
         Page<List<RecommendChapter>> page = recommendChapterService.pageQuery(query);
         if (page == null) {
