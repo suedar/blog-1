@@ -1,14 +1,17 @@
 package com.suedar.blog.api.vo;
 
 
-import com.suedar.blog.api.domain.Label;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
 public class ChapterVO {
+    private MultipartFile file;
+
+    private String chapterContent;
 
     private Integer id;
 
@@ -28,5 +31,5 @@ public class ChapterVO {
 
     private String content;
 
-    private List<Label> labelList;
+    private List<String> labelList;
 }

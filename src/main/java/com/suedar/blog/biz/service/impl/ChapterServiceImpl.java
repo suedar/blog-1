@@ -39,7 +39,7 @@ public class ChapterServiceImpl implements ChapterService {
         Chapter chapter = new Chapter();
         chapter.setId(id);
         chapter.setIsDeleted(Boolean.TRUE);
-        return chapterMapper.updateByPrimaryKey(chapter);
+        return chapterMapper.updateByPrimaryKeySelective(chapter);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ChapterServiceImpl implements ChapterService {
             return null;
         }
 
-        Page<List<Chapter>> page = new Page<>(query.getPageNum(), query.getPageSize());
+        Page<List<Chapter>> page = new Page<>(query.getPageNum(), query.getPageSize(), query.getIsPage());
         page.setResult(chapterMapper.pageQuery(query));
         page.setTotalNum(chapterMapper.countPageQuery(query));
         return page;

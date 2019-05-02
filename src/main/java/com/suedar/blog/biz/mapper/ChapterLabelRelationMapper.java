@@ -2,6 +2,7 @@ package com.suedar.blog.biz.mapper;
 
 import com.suedar.blog.api.domain.ChapterLabelRelation;
 import com.suedar.blog.api.dto.ChapterLabelRelationDelDTO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface ChapterLabelRelationMapper {
 
     int updateByPrimaryKey(ChapterLabelRelation record);
 
-    List<ChapterLabelRelation> selectByChapterIds(List<Integer> chapterIds);
+    List<ChapterLabelRelation> selectByChapterIds(@Param("chapterIds") List<Integer> chapterIds);
 
     List<ChapterLabelRelation> selectByLabelIds(List<Integer> labelIds);
 

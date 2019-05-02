@@ -1,6 +1,5 @@
 package com.suedar.blog.biz.base;
 
-import lombok.Data;
 
 public class Page<T> {
 
@@ -14,20 +13,31 @@ public class Page<T> {
 
     private Integer offset = 0;
 
+    private Boolean isPage = Boolean.TRUE;
+
     public Page() {
+    }
+
+    public Page(Integer pageNum, Integer pageSize, Boolean isPage) {
+        this.pageNum = (pageNum == null || pageNum <= 0) ? 1 : pageNum;
+        this.pageSize = (pageSize == null || pageSize <= 0) ? 10 : pageSize;
+        this.offset = (this.pageNum - 1) * this.pageSize;
+        this.isPage = isPage == null ? true : isPage;
     }
 
     public Page(Integer pageNum, Integer pageSize) {
         this.pageNum = (pageNum == null || pageNum <= 0) ? 1 : pageNum;
         this.pageSize = (pageSize == null || pageSize <= 0) ? 10 : pageSize;
         this.offset = (this.pageNum - 1) * this.pageSize;
+        this.isPage = true;
     }
 
-    public Page(Integer pageNum, Integer pageSize, Integer totalNum) {
+    public Page(Integer pageNum, Integer pageSize, Integer totalNum, Boolean isPage) {
         this.pageNum = (pageNum == null || pageNum <= 0) ? 1 : pageNum;
         this.pageSize = (pageSize == null || pageSize <= 0) ? 10 : pageSize;
         this.offset = (this.pageNum - 1) * this.pageSize;
         this.totalNum = totalNum;
+        this.isPage = isPage == null ? true : isPage;
     }
 
     public Integer getPageNum() {
@@ -70,5 +80,13 @@ public class Page<T> {
 
     public void setResult(T result) {
         this.result = result;
+    }
+
+    public Boolean getIsPage() {
+        return isPage;
+    }
+
+    public void setIsPage(Boolean page) {
+        isPage = page;
     }
 }

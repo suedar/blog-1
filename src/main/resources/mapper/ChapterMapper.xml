@@ -22,7 +22,9 @@
     from Chapter
     <include refid="WHERE_CLAUSE"/>
     order by created desc
-    limit #{offset},#{pageSize}
+    <if test="isPage == true">
+      limit #{offset},#{pageSize}
+    </if>
   </select>
   <select id="countPageQuery" parameterType="com.suedar.blog.api.query.ChapterPageQuery" resultType="java.lang.Integer">
     select

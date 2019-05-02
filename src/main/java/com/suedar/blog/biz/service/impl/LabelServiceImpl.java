@@ -20,8 +20,8 @@ public class LabelServiceImpl implements LabelService {
         if (label == null) {
             return -1;
         }
-
-        return labelMapper.insertSelective(label);
+        labelMapper.insertSelective(label);
+        return label.getId();
     }
 
     @Override
