@@ -228,8 +228,16 @@ public class ChapterController {
             return BaseResult.errorReturn("文章不存在");
         }
 
+        // 文章热度 +1
+        Chapter dbChapter = chapterList.get(0);
+        Chapter chapter = new Chapter();
+        chapter.setId(id);
+        chapter.setTemperature(dbChapter.getTemperature() + 1);
+        chapterService.updateById(chapter);
+
         ChapterVO chapterVO = new ChapterVO();
-        BeanUtils.copyProperties(chapterList.get(0), chapterVO);
+        BeanUtils.copyProperties(dbChapter, chapterVO);
+        chapterVO.setTemperature(chapter.getTemperature());
         List<ChapterLabelRelation> relationList = relationService.selectByChapterIds(chapIdlist);
         if (!CollectionUtils.isEmpty(relationList)) {
             List<Integer> labelIds = relationList.stream().map(ChapterLabelRelation::getLabelId).collect(Collectors.toList());
