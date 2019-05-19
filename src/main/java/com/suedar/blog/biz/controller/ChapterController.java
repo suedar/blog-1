@@ -18,10 +18,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +44,7 @@ public class ChapterController {
     }
 
     @PostMapping("/alterArticle")
-    public BaseResult<Integer> insert(ChapterVO chapterVO) {
+    public BaseResult<Integer> insertOrUpdate(ChapterVO chapterVO) {
         if (chapterVO == null) {
             return BaseResult.errorReturn("保存文章失败");
         }
@@ -72,16 +69,17 @@ public class ChapterController {
         }
 
         // 保存文章文件
-        MultipartFile file = chapterVO.getFile();
-        String filePath = UPLOAD_PATH;
-        File folder = new File(filePath);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        String path = filePath + File.separator + chapterId + ".md";
-        File destFile = new File(path);
         try {
-            file.transferTo(destFile);
+            String filePath = UPLOAD_PATH;
+            File folder = new File(filePath);
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+            String path = filePath + File.separator + chapterId + ".md";
+            String chapterContent = chapterVO.getChapterContent();
+            FileOutputStream outputStream = new FileOutputStream(new File(path));
+            byte[] data = chapterContent.getBytes();
+            outputStream.write(data, 0, data.length);
         } catch (Exception e) {
             return BaseResult.errorReturn("保存文章失败");
         }

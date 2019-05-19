@@ -2,14 +2,11 @@ package com.suedar.blog.api.vo;
 
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Date;
 import java.util.List;
 
 @Data
 public class ChapterVO {
-    private MultipartFile file;
 
     private String chapterContent;
 
