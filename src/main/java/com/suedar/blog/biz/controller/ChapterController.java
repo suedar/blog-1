@@ -33,7 +33,8 @@ public class ChapterController {
 
     private final ChapterLabelRelationService relationService;
 
-    private static final String UPLOAD_PATH = "/Users/xyang010/Documents/IdeaProject/blog/src/main/resources/upload";
+//    private static final String UPLOAD_PATH = "/Users/xyang010/Documents/IdeaProject/blog/src/main/resources/upload";
+    public static final String UPLOAD_PATH = "C:\\Users\\Administrator\\IdeaProjects\\blog\\src\\main\\resources\\upload";
 
 
     @Autowired

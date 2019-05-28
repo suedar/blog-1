@@ -75,7 +75,7 @@ public class LabelController {
     }
 
     @PostMapping("/query")
-    public BaseResult<List<LabelVO>> query(LabelQuery query) {
+    public BaseResult<List<LabelVO>> query(@RequestBody LabelQuery query) {
 
         // 查询标签
         List<Label> labelList = labelService.query(query);
