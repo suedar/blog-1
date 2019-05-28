@@ -82,6 +82,7 @@ public class ChapterController {
             byte[] data = chapterContent.getBytes();
             outputStream.write(data, 0, data.length);
         } catch (Exception e) {
+            e.printStackTrace();
             return BaseResult.errorReturn("保存文章失败");
         }
 
