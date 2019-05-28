@@ -44,7 +44,7 @@ public class ChapterController {
     }
 
     @PostMapping("/alterArticle")
-    public BaseResult<Integer> insertOrUpdate(ChapterVO chapterVO) {
+    public BaseResult<Integer> insertOrUpdate(@RequestBody ChapterVO chapterVO) {
         if (chapterVO == null) {
             return BaseResult.errorReturn("保存文章失败");
         }
@@ -169,7 +169,7 @@ public class ChapterController {
     }
 
     @PostMapping("/article")
-    public BaseResult<Page<List<ChapterVO>>> pageQuery(ChapterPageQuery query) {
+    public BaseResult<Page<List<ChapterVO>>> pageQuery(@RequestBody ChapterPageQuery query) {
 
         // 查询文章
         Page<List<Chapter>> dbPage = chapterService.pageQuery(query);
